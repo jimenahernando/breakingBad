@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CharacterService } from 'src/app/services/character.service';
 import { Character } from '../../interfaces/character.interface';
 
@@ -10,29 +11,34 @@ import { Character } from '../../interfaces/character.interface';
 export class ListCharactersComponent implements OnInit {
 
   arrCharacters: Character[];
-  arrCategories: string[];
-
-  constructor(private characterService: CharacterService ) {
+ 
+  constructor(
+    private characterService: CharacterService,
+    private activatedRoute: ActivatedRoute
+    ) {
     this.arrCharacters = [];
-    this.arrCategories = [];
   }
 
-  async ngOnInit(): Promise<any> {
-    this.arrCharacters = await this.characterService.getAll()
+  async ngOnInit(){
+    this.arrCharacters = await this.characterService.getAll();
     
-    this.arrCategories = [... new Set(this.arrCharacters.map(character => character.category))];
-  }
-
-  async filterByCategory(pForm: any){
-    const category = pForm.value;
-    console.log(category)
-    this.arrCharacters = await this.characterService.getByCategory(category);
-    console.log(this.arrCharacters);
-  }
-  
-  async filterName($event: any){
-    const name = $event.target.value;
-    this.arrCharacters = await this.characterService.getByName(name);
-    console.log(this.arrCharacters);
+    this.activatedRoute.params?.subscribe(async params => {
+      console.log(params);
+      if(params.name){
+        this.arrCharacters = await this.characterService.getByName(params.name);      
+      }else{
+        this.arrCharacters = await this.characterService.getAll();
+      }
+    })
+    
+    // queryParams
+    this.activatedRoute.queryParams.subscribe(async queryParams => {
+      console.log(queryParams);
+      if(queryParams.category){
+        this.arrCharacters = await this.characterService.getByCategory(queryParams.category);
+      } else {
+        this.arrCharacters = await this.characterService.getAll();
+      }
+    })
   }
 }

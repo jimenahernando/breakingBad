@@ -1,1 +1,19 @@
+<!-- filtros -->
+<header class="d-flex justify-content-between align-items-center p-4 mb-4">
+    <figure class="logo" [routerLink]="['/home']">
+        <img src="../assets/logo.svg" alt="Breaking Bad">
+    </figure>
+    <div class="d-flex">
+        <input type="text" class="form-control" placeholder="Introduce un nombre" [(ngModel)]="search" >
+        <button (click)="filterByName()" class="btn btn-warning ms-3">Buscar</button>
+    </div>
+    <div>
+        <select class="form-select" (change)="filterByCategory($event)">
+            <option value="">Selecciona una categoria</option>
+            <option value="Breaking Bad">Breaking Bad</option>
+            <option value="Better Call Saul">Better Call</option>
+            <!-- <option [value]="category" *ngFor="let category of arrCategories">{{category}}</option> -->
+        </select>
+    </div>
+</header>
 <router-outlet></router-outlet>

@@ -1,17 +1,4 @@
-<header>
-    <!-- filtros -->
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <form class="d-flex" #formulario="ngForm">
-                <input type="text" class="form-control" placeholder="titulo a buscar" (input)="filterName($event)">
-                <select class="form-select" ngModel name="category" (change)="filterByCategory(formulario)">
-                    <option value="">Ver todas</option>
-                    <option [value]="category" *ngFor="let category of arrCategories">{{category}}</option>
-                </select>
-            </form>
-        </div>
-    </nav>
-</header>
+
 <section class="container mt-5">
     <div class="row">
         <article class="col-12 col-md-6 col-lg-4" *ngFor="let character of arrCharacters">

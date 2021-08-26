@@ -9,13 +9,15 @@ import { ListCharactersComponent } from './components/list-characters/list-chara
 import { ThumbnailCharacterComponent } from './components/thumbnail-character/thumbnail-character.component';
 import { SingleCharacterComponent } from './components/single-character/single-character.component';
 import { FormsModule } from '@angular/forms';
+import { Component404Component } from './components/component404/component404.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListCharactersComponent,
     ThumbnailCharacterComponent,
-    SingleCharacterComponent
+    SingleCharacterComponent,
+    Component404Component
   ],
   imports: [
     BrowserModule,
