@@ -5,4 +5,9 @@
             <app-thumbnail-character [character]="character"></app-thumbnail-character>
         </article>
     </div>
+    <nav *ngIf="showPagination">
+        <ul class="pagination pagination-sm">
+            <li class="page-item" routerLinkActive="active" *ngFor="let page of arrPages; let i = index" ><a class="page-link" href="#" [routerLink]="['/home', i+1]">{{i+1}}</a></li>
+        </ul>
+    </nav>
 </section>

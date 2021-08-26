@@ -29,4 +29,8 @@ export class CharacterService {
   getByName(pName: string): Promise<Character[]>{
     return this.httpClient.get<Character[]>(this.baseUrl + '?name=' + pName).toPromise();
   }
+
+  getByPage(pPage:number = 1) : Promise<Character[]>{
+    return this.httpClient.get<Character[]>(this.baseUrl + `?limit=10&offset=${(pPage-1)*10}`).toPromise();
+  }
 }
