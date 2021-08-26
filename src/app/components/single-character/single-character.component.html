@@ -1,0 +1,18 @@
+<section class="container my-3">
+    <div class="card bg-dark text-white">
+        <figure>
+            <img [src]="character?.img" class="card-img" [alt]="character?.name">
+        </figure>
+        <div class="card-img-overlay">
+            <h5 class="card-title">{{character?.name}}</h5> 
+            <h6>{{character?.portrayed}}</h6>
+            <ul>
+                <li>Actor/actriz: </li>
+                <li>Cumpleaños: {{character?.birthday}}</li>
+                <li>Ocupacion: {{character?.occupation}}</li>
+                <li>Temporadas activas: {{character?.appearance}}</li>
+                <li>Serie: {{character?.category}}</li>
+            </ul>
+        </div>
+    </div>
+</section>
