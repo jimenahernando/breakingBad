@@ -1,0 +1,20 @@
+<div class="card mb-3">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img [src]="character?.img" class="img-fluid rounded-start" [alt]="character?.nickname">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{character?.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{character?.nickname}}</h6>
+                <ul class="card-text">
+                    <li>{{character?.portrayed}}</li>
+                    <li>{{character?.occupation}}</li>
+                    <li>{{character?.birthday}}</li>
+                </ul>
+                <p class="card-text"><small class="text-muted">{{character?.status}}</small></p>
+                <button class="btn-warning" [routerLink]="['/characters', character?.char_id]">See more</button>
+            </div>
+        </div>
+    </div>
+</div>
