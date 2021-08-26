@@ -17,15 +17,16 @@ export class CharacterService {
     return this.httpClient.get<Character[]>(this.baseUrl).toPromise();
   }
   
-  getById(idCaracter: number): Promise<Character[]>{
-    return this.httpClient.get<Character[]>(this.baseUrl + idCaracter).toPromise();
+  getById(pId: number): Promise<Character[]>{
+    return this.httpClient.get<Character[]>(this.baseUrl + pId).toPromise();
   }
 
-  getByCategory(category: string): Promise<Character[]>{
-    return this.httpClient.get<Character[]>(this.baseUrl + '?category =' + category).toPromise();
+  getByCategory(pCategory: string): Promise<Character[]>{
+    console.log(pCategory);
+    return this.httpClient.get<Character[]>(this.baseUrl + '?category=' + pCategory).toPromise();
   }
 
-  getByName(name: string): Promise<Character[]>{
-    return this.httpClient.get<Character[]>(this.baseUrl + '?name='+ name).toPromise();
+  getByName(pName: string): Promise<Character[]>{
+    return this.httpClient.get<Character[]>(this.baseUrl + '?name=' + pName).toPromise();
   }
 }
